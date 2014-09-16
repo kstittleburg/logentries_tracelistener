@@ -9,7 +9,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>TraceListener implementation that writes to Logentries.com</description>
     <releaseNotes>Initial release</releaseNotes>
-    <copyright>4</copyright>
+    <copyright></copyright>
     <tags>logentries tracelistener</tags>
     <dependencies>
       <dependency id="logentries.core" version="2.5.0" />
