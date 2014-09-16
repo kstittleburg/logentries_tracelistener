@@ -5,7 +5,7 @@
     <version>1.0.0</version>
     <authors>Kyle Stittleburg</authors>
     <owners>Kyle Stittleburg</owners>
-    <projectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</projectUrl>
+    <projectUrl>https://github.com/kylestittleburg/logentries_tracelistener</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>TraceListener implementation that writes to Logentries.com</description>
     <releaseNotes>Initial release</releaseNotes>
