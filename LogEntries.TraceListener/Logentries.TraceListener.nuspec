@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Logentries.TraceListener</id>
+    <version>1.0.0</version>
+    <authors>Kyle Stittleburg</authors>
+    <owners>Kyle Stittleburg</owners>
+    <projectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>TraceListener implementation that writes to Logentries.com</description>
+    <releaseNotes>Initial release</releaseNotes>
+    <copyright>4</copyright>
+    <tags>logentries tracelistener</tags>
+    <dependencies>
+      <dependency id="logentries.core" version="2.5.0" />
+    </dependencies>
+  </metadata>
+</package>
