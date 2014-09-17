@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Logentries.TraceListener</id>
-    <version>1.0.0</version>
+    <version>1.0.9</version>
     <authors>Kyle Stittleburg</authors>
     <owners>Kyle Stittleburg</owners>
     <projectUrl>https://github.com/kylestittleburg/logentries_tracelistener</projectUrl>

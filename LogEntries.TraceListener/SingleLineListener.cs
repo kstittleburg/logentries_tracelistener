@@ -64,11 +64,35 @@ namespace LogEntries.TraceListener
             if (Filter != null && !Filter.ShouldTrace(eventCache, source, eventType, id, message, null, null, null))
                 return;
 
-            var logMessage = String.Format(CultureInfo.InvariantCulture, "{0} {1}: {2} : ", source, eventType,
-                id.ToString(CultureInfo.InvariantCulture))
+            var logMessage = String.Format(CultureInfo.InvariantCulture, "{0} {1}: ", source, MapLogLevel(eventType))
                              + message;
 
             WriteLine(logMessage);
+        }
+
+        private static string MapLogLevel(TraceEventType eventType)
+        {
+            switch (eventType)
+            {
+                case TraceEventType.Start:
+                case TraceEventType.Stop:
+                case TraceEventType.Suspend:
+                case TraceEventType.Resume:
+                case TraceEventType.Transfer:
+                    return "TRACE";
+                case TraceEventType.Verbose:
+                    return "DEBUG";
+                case TraceEventType.Information:
+                    return "INFO";
+                case TraceEventType.Warning:
+                    return "WARN";
+                case TraceEventType.Error:
+                    return "ERROR";
+                case TraceEventType.Critical:
+                    return "FATAL";
+                default:
+                    return "TRACE";
+            }
         }
     }
 }

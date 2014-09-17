@@ -1,16 +1,48 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using LogentriesCore.Net;
+using Microsoft.WindowsAzure;
 
 namespace LogEntries.TraceListener
 {
     public class LogentriesListener : SingleLineListener
     {
         private readonly AsyncLogger logentriesAsync;
+        private readonly static object LockObject = new object();
 
         public LogentriesListener()
+            : this("")
+        {
+        }
+
+        public LogentriesListener(string token)
         {
             logentriesAsync = new AsyncLogger();
+            Token = token;
+        }
+
+        /// <summary>
+        /// Adds a new LogentriesListener to Trace.Listeners if none exists already
+        /// </summary>
+        /// <param name="tokenConfigurationKey">Configuration key (app.config or cloud cscfg) to read logentries.com token from</param>
+        /// <remarks>Assumes you will only ever have 1 LogentriesListener within your app domain; of an existing listener is found, just the token is updated.</remarks>
+        public static void GlobalInitialize(string tokenConfigurationKey = "Logentries.Token")
+        {
+            lock (LockObject)
+            {
+                var token = CloudConfigurationManager.GetSetting(tokenConfigurationKey);
+                var existingListener = Trace.Listeners.OfType<LogentriesListener>().FirstOrDefault();
+
+                if (existingListener != null)
+                {
+                    existingListener.Token = token;
+                }
+                else
+                {
+                    Trace.Listeners.Add(new LogentriesListener(token));    
+                }
+            }
         }
 
         #region attributeMethods
